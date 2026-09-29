@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { supabase } from './supabase'
+import PasswordInput from './PasswordInput'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -26,7 +27,7 @@ export default function Login() {
         </label>
         <label>
           Contraseña
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <PasswordInput value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" required />
         </label>
         {error && <p className="error">{error}</p>}
         <button disabled={loading}>{loading ? 'Entrando…' : 'Entrar'}</button>

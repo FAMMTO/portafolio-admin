@@ -110,6 +110,11 @@ a { color: var(--accent); }
 .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; align-items: start; }
 input:disabled { opacity: .5; }
 .grid-3 { display: grid; grid-template-columns: 1fr 2fr 2fr; gap: 10px; flex: 1; min-width: 0; }
+.password { display: flex; gap: 6px; }
+.password input { flex: 1; }
+.datos { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin: 0; }
+.datos dt { color: var(--muted); font-size: 13px; }
+.datos dd { margin: 0; word-break: break-all; }
 .stats-editor { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .stat-row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; padding: 12px; border: 1px solid var(--border); border-radius: 10px; }
 @media (max-width: 560px) { .grid-3 { grid-template-columns: 1fr; } }

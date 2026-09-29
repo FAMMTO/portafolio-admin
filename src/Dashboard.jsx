@@ -4,13 +4,14 @@ import ProjectForm, { CATEGORIAS } from './ProjectForm'
 import ContactForm from './ContactForm'
 import Trayectoria from './Trayectoria'
 import SobreMi from './SobreMi'
+import Cuenta from './Cuenta'
 
 export default function Dashboard({ user }) {
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
   const [editing, setEditing] = useState(null) // null | 'new' | proyecto
   const [filter, setFilter] = useState('')
-  const [view, setView] = useState(null) // null | 'contacto' | 'trayectoria' | 'sobre'
+  const [view, setView] = useState(null) // null | 'contacto' | 'trayectoria' | 'sobre' | 'cuenta'
 
   async function load() {
     const { data, error } = await supabase
@@ -67,6 +68,7 @@ export default function Dashboard({ user }) {
   if (view === 'contacto') return <ContactForm onClose={() => setView(null)} />
   if (view === 'trayectoria') return <Trayectoria onClose={() => setView(null)} />
   if (view === 'sobre') return <SobreMi onClose={() => setView(null)} />
+  if (view === 'cuenta') return <Cuenta user={user} onClose={() => setView(null)} />
 
   if (editing) {
     return (
@@ -93,7 +95,7 @@ export default function Dashboard({ user }) {
       <header className="topbar">
         <h1>Proyectos</h1>
         <div className="row">
-          <span className="muted small">{user.email}</span>
+          <button className="ghost small" onClick={() => setView('cuenta')} title="Mi cuenta">👤 {user.email}</button>
           <button className="ghost" onClick={() => setView('sobre')}>Sobre mí</button>
           <button className="ghost" onClick={() => setView('trayectoria')}>Trayectoria</button>
           <button className="ghost" onClick={() => setView('contacto')}>Contacto</button>
